@@ -14,6 +14,10 @@ focused = root.find_focused()
 windows = root.descendants()
 
 window_id_list = [window.id for window in windows]
+
 print(focused)
 
+print(windows)
+
+print(window_id_list)
 
