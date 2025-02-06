@@ -21,3 +21,4 @@ print(windows)
 
 print(window_id_list)
 
+sway.main()
