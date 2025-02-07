@@ -34,3 +34,5 @@ existing_workspaces.sort()
 empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
 
 sway.command(f"workspace number {empty_workspace}")
+
+exit(0)
