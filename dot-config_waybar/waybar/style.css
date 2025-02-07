@@ -93,6 +93,7 @@ button:hover {
 #mode {
     /* background-color: #64727D; */
     background-color: #666699;
+    border-radius: 5px;
     /* box-shadow: inset 0 -3px #ffffff; */
 }
 

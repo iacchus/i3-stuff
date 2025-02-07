@@ -168,7 +168,11 @@ input type:touchpad {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-#
+
+    bindsym $mod+Tab mode swtchr; exec ~/.cargo/bin/swtchr
+    bindsym $mod+Shift+Tab mode swtchr; exec ~/.cargo/bin/swtchr
+    mode swtchr bindsym Backspace mode default
+
     bindsym KP_Home exec "/home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py prev"
     bindsym KP_Prior exec /home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py next
     bindsym KP_Right workspace next
@@ -191,7 +195,9 @@ input type:touchpad {
     # 125  KEY_LEFTMETA
   
     bindsym --release Control_L [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 29:1 56:1 44:1 44:0 56:0 29:0
+    bindsym --release Control_R [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 29:1 56:1 44:1 44:0 56:0 29:0
     bindsym --release ISO_Level3_Shift [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 29:1 38:1 38:0 29:0
+    bindsym --release Super_L exec albert toggle
 
     bindsym KP_Next [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 15:1 15:0 29:0
     bindsym KP_End [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 42:1 15:1 15:0 42:0 29:0
@@ -393,6 +399,9 @@ exec albert
 exec copyq
 exec espanso start
 exec ydotoold
+
+exec_always ~/.cargo/bin/swtchrd
+
 # interception tools
 # exec_always xcape -t 150 'Control_L=Control_L|Alt_L|z'
 # exec xcape -t 150 -e 'Super_L=Super_L|R;Control_L=Control_L|F6;ISO_Level3_Shift=Control_L|L;Shift_R=Tab;Shift_L=Shift_R|Tab;Page_Down=Control_L|Tab;KP_End=Control_L|Shift_L|Tab;KP_Next=Control_L|Tab;'
