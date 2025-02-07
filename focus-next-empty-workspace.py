@@ -6,6 +6,7 @@ import i3ipc
 
 SWAYSOCK = os.environ['SWAYSOCK']
 SCRATCHPAD_NAME = "__i3_scratch"
+SCRATCHPAD_NAME2 = "scratchpad"
 
 
 def get_next_empty_workspace(workspaces: list[int]):
@@ -25,7 +26,8 @@ descendants = root.descendants()
 
 existing_workspaces = [int(workspace.name) for workspace in descendants
                        if workspace.type == "workspace"
-                       and workspace.name != SCRATCHPAD_NAME]
+                       and workspace.name != SCRATCHPAD_NAME
+                       and workspace.name != SCRATCHPAD_NAME2]
 
 existing_workspaces.sort()
 
