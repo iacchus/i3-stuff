@@ -179,6 +179,7 @@ input type:touchpad {
     bindsym KP_Begin exec /home/iacchus/git-stuff/swaywm-stuff/focus-next-empty-workspace.py
     bindsym KP_Left workspace prev
     bindsym KP_Insert bar hidden_state toggle
+    bindsym KP_Down sticky toggle
 
     # /usr/include/linux/input-event-codes.h
     # some codes
