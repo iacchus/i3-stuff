@@ -2,6 +2,8 @@
 
 set -e
 
+# https://github.com/Gustash/sway-screenshot
+
 AVAILABLE_MODES=(output window region)
 
 function Help() {
