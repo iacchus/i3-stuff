@@ -125,17 +125,39 @@ input type:touchpad {
     bindsym F2 exec $webbrowser
     bindsym F3 exec $noteedditor
     bindsym F4 exec $filemanager
+    # bindsym F6 scratchpad show
     # bindsym F10 exec swaymsg '[app_id=".*"]' focus
     # bindsym F10 [all] focus next
     # bindsym F10 for_window [app_id=".*"] focus
     # bindsym F10 for_window [all] focus
+    # bindsym F7 exec "gammastep -O 2750"
+    bindsym F7 exec "/home/iacchus/git-stuff/swaywm-stuff/program-toggle.py gammastep -O 2750"
+    # bindsym F8 exec ""
     bindsym F9 exec "/home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py prev"
     bindsym F10 exec "/home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py next"
     bindsym F11 workspace next
     bindsym F12 workspace prev
 
+    # bindsym Print exec grim
+    # bindsym Print exec "/home/iacchus/git-stuff/swaywm-stuff/sway-screenshot -m output"
+    bindsym Insert exec "/home/iacchus/git-stuff/swaywm-stuff/sway-screenshot -m region"
+    bindsym $mod+Insert exec "/home/iacchus/git-stuff/swaywm-stuff/sway-screenshot -m output"
+    bindsym $mod+Shift+Insert exec "/home/iacchus/git-stuff/swaywm-stuff/sway-screenshot -m window"
     # bindsym $mod+Print exec grim
-    # bindsym Print exec $term grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)"
+    # bindsym Print exec $term grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | slurp)"
+
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioPause exec playerctl play-pause
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
+    bindsym XF86AudioStop exec playerctl stop
+    bindsym XF86Search exec $launcher
 
     # Start a terminal
     bindsym $mod+Return exec $term
@@ -157,7 +179,7 @@ input type:touchpad {
     # Despite the name, also works for non-floating windows.
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
-    floating_maximum_size -1 x -1 
+    floating_maximum_size -1 x -1
     floating_modifier $mod normal
 
     # focus_wrapping yes
@@ -174,9 +196,9 @@ input type:touchpad {
     mode swtchr bindsym Backspace mode default
 
     bindsym KP_Home exec "/home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py prev"
-    bindsym KP_Prior exec /home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py next
+    bindsym KP_Prior exec "/home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py next"
     bindsym KP_Right workspace next
-    bindsym KP_Begin exec /home/iacchus/git-stuff/swaywm-stuff/focus-next-empty-workspace.py
+    bindsym KP_Begin exec "/home/iacchus/git-stuff/swaywm-stuff/focus-next-empty-workspace.py"
     bindsym KP_Left workspace prev
     bindsym KP_Insert bar hidden_state toggle
     bindsym KP_Down sticky toggle
@@ -203,25 +225,16 @@ input type:touchpad {
     bindsym KP_Next [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 15:1 15:0 29:0
     bindsym KP_End [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 42:1 15:1 15:0 42:0 29:0
     # for_window [app_id="firefox-nightly" con_id=__focused__] bindgesture swipe:3:up exec ydotool key 1:1 1:0 29:1 20:1 20:0 29:0
+
+
+    bindgesture swipe:2:right workspace next
+    bindgesture swipe:2:left workspace prev
+
     bindgesture swipe:3:up [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 20:1 20:0 29:0
     bindgesture swipe:3:down [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 17:1 17:0 29:0
     bindgesture swipe:3:right [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 15:1 15:0 29:0
     bindgesture swipe:3:left [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 42:1 15:1 15:0 42:0 29:0
 
-# for_window [app_id="firefox-nightly" con_id=__focused__] {
-  # for_window [app_id="firefox-nightly" con_id=__focused__] {
-  # for_window [app_id="firefox-nightly" app_id="__focused__"] {
-  # for_window [app_id="firefox-nightly" con_id=__focused__] {
-  # for_window [app_id="firefox-nightly" app_id="__focused__"] {
-  #     bindgesture swipe:3:up exec ydotool key 1:1 1:0 29:1 20:1 20:0 29:0,
-  #     bindgesture swipe:3:down exec ydotool key 1:1 1:0 29:1 17:1 17:0 29:0,
-  #     bindgesture swipe:3:right exec ydotool key 1:1 1:0 29:1 15:1 15:0 29:0,
-  #     bindgesture swipe:3:left exec ydotool key 1:1 1:0 29:1 42:1 15:1 15:0 42:0 29:0,
-  #     bindgesture swipe:4:right workspace next,
-  #     bindgesture swipe:4:left workspace prev; }
-
-    # bindgesture swipe:4:down exec ydotool key 1:1 1:0 125:1 42:1 16:1 16:0 42:0 125:0
-    # for_window [app_id="^(?!firefox-nightly$)"] bindgesture swipe:3:up  exec alacritty;
     bindgesture swipe:4:up exec alacritty
     bindgesture swipe:4:down kill
     bindgesture swipe:4:right workspace next
@@ -262,10 +275,12 @@ input type:touchpad {
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
     # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+    # bindsym $mod+Shift+Left move left
+    # bindsym $mod+Shift+Down move down
+    # bindsym $mod+Shift+Up move up
+    # bindsym $mod+Shift+Right move right
+    bindsym $mod+Shift+Left move container to workspace prev, workspace prev
+    bindsym $mod+Shift+Right move container to workspace next, workspace next
 #
 # Workspaces:
 #
@@ -281,16 +296,16 @@ input type:touchpad {
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+Shift+1 move container to workspace number 1, workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2, workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3, workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4, workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5, workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6, workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7, workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8, workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9, workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10, workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
@@ -358,15 +373,24 @@ bindsym $mod+r mode "resize"
 for_window [app_id="Alacritty"] floating enable
 for_window [app_id="albert"] floating enable
 for_window [app_id="com.github.hluk.copyq"] floating enable
+for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
+# for_window [app_id="com.github.hluk.copyq"] floating enable, move scratchpad
 for_window [class="Gimp"] floating enable
 for_window [class="obsidian"] floating enable
+for_window [class="Pcmanfm"] floating enable
+for_window [app_id="qalculate-gtk"] floating enable
 
 for_window [app_id="firefox-nightly"] fullscreen enable
+for_window [app_id="com.github.PintaProject.Pinta"] fullscreen enable
 
 for_window [title="Espanso Sync Tool"] floating enable
 assign [title="Espanso Sync Tool"] scratchpad
 
-#
+for_window [window_type="dialog"] floating enable
+for_window [window_role="dialog"] floating enable
+
+for_window [shell="xwayland"] title_format "[XWayland] %title"
+
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
@@ -396,6 +420,7 @@ bar {
     # }
 }
 
+exec nm-applet
 exec albert
 exec copyq
 exec espanso start

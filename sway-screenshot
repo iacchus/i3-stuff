@@ -60,6 +60,7 @@ function save_geometry() {
         convert $output -trim +repage $output
         # wl-copy < "$output"  # ORIGINAL
         echo $output | wl-copy 
+        pinta $(wl-paste)
         send_notification $output
         [ -z "$COMMAND" ] || {
             "$COMMAND" "$output"
