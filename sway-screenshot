@@ -58,7 +58,8 @@ function save_geometry() {
         # Trim transparent pixels, in case the window was floating and partially
         # outside the monitor
         convert $output -trim +repage $output
-        wl-copy < "$output"
+        # wl-copy < "$output"  # ORIGINAL
+        echo $output | wl-copy 
         send_notification $output
         [ -z "$COMMAND" ] || {
             "$COMMAND" "$output"
