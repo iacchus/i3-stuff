@@ -125,7 +125,7 @@ input type:touchpad {
     bindsym F2 exec $webbrowser
     bindsym F3 exec $noteedditor
     bindsym F4 exec $filemanager
-    # bindsym F6 scratchpad show
+    bindsym F6 exec $clipboardmanager
     # bindsym F10 exec swaymsg '[app_id=".*"]' focus
     # bindsym F10 [all] focus next
     # bindsym F10 for_window [app_id=".*"] focus
@@ -135,8 +135,10 @@ input type:touchpad {
     # bindsym F8 exec ""
     bindsym F9 exec "/home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py prev"
     bindsym F10 exec "/home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py next"
-    bindsym F11 workspace next
-    bindsym F12 workspace prev
+    # bindsym F11 workspace next
+    # bindsym F12 workspace prev
+    bindsym F11 move container to workspace prev, workspace prev
+    bindsym F12 move container to workspace next, workspace next
 
     # bindsym Print exec grim
     # bindsym Print exec "/home/iacchus/git-stuff/swaywm-stuff/sway-screenshot -m output"
@@ -160,7 +162,7 @@ input type:touchpad {
     bindsym XF86Search exec $launcher
 
     # Start a terminal
-    bindsym $mod+Return exec $term
+    # bindsym $mod+Return exec $term
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -172,7 +174,7 @@ input type:touchpad {
     bindsym $mod+q exec $calculator
 
     # Start file manager
-    bindsym $mod+Shift+Return exec $filemanager
+    # bindsym $mod+Shift+Return exec $filemanager
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -227,8 +229,8 @@ input type:touchpad {
     # for_window [app_id="firefox-nightly" con_id=__focused__] bindgesture swipe:3:up exec ydotool key 1:1 1:0 29:1 20:1 20:0 29:0
 
 
-    bindgesture swipe:2:right workspace next
-    bindgesture swipe:2:left workspace prev
+    # bindgesture swipe:2:right workspace next
+    # bindgesture swipe:2:left workspace prev
 
     bindgesture swipe:3:up [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 20:1 20:0 29:0
     bindgesture swipe:3:down [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 17:1 17:0 29:0
@@ -239,9 +241,9 @@ input type:touchpad {
     bindgesture swipe:4:down kill
     bindgesture swipe:4:right workspace next
     bindgesture swipe:4:left workspace prev
-    bindgesture pinch:right workspace next
-    bindgesture pinch:left workspace prev
-    bindgesture pinch:outward+left workspace prev
+    # bindgesture pinch:right workspace next
+    # bindgesture pinch:left workspace prev
+    # bindgesture pinch:outward+left workspace prev
 
     # bindgesture hold [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 42:1 15:1 15:0 42:0 29:0
     # bindgesture hold exec alacritty
@@ -281,6 +283,8 @@ input type:touchpad {
     # bindsym $mod+Shift+Right move right
     bindsym $mod+Shift+Left move container to workspace prev, workspace prev
     bindsym $mod+Shift+Right move container to workspace next, workspace next
+    bindsym $mod+KP_Left move container to workspace prev, workspace prev
+    bindsym $mod+KP_Right move container to workspace next, workspace next
 #
 # Workspaces:
 #
@@ -377,6 +381,8 @@ for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
 # for_window [app_id="com.github.hluk.copyq"] floating enable, move scratchpad
 for_window [class="Gimp"] floating enable
 for_window [class="obsidian"] floating enable
+for_window [app_id="opensnitch_ui"] floating enable
+
 for_window [class="Pcmanfm"] floating enable
 for_window [app_id="qalculate-gtk"] floating enable
 
@@ -420,6 +426,7 @@ bar {
     # }
 }
 
+exec opensnitch-ui
 exec nm-applet
 exec albert
 exec copyq
