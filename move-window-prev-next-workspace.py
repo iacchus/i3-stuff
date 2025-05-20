@@ -40,14 +40,13 @@ existing_workspaces = [int(workspace.name) for workspace in descendants
 
 existing_workspaces.sort()
 
-focused = root.find_focused()
-focused_workspace = focused.workspace()
+focused_window = root.find_focused()
+focused_workspace = focused_window.workspace()
 workspace_name = int(focused_workspace.name)
 num_of_containers_in_focused_workspace = len(focused_workspace.descendants())
 
 if direction == "next":
-    pass
-
+    pass  # nothing to be done
 elif direction == "prev":
     existing_workspaces.reverse()
 
