@@ -46,12 +46,13 @@ workspace_name = int(focused_workspace.name)
 num_of_containers_in_focused_workspace = len(focused_workspace.descendants())
 
 if direction == "next":
-    pass  # nothing to be done
+    next_to_focus = 0
 elif direction == "prev":
+    next_to_focus = 1
     existing_workspaces.reverse()
 
 if num_of_containers_in_focused_workspace == 0:  # a new, empty workspace
-    to_workspace = existing_workspaces[0]
+    to_workspace = existing_workspaces[next_to_focus]
 elif workspace_name == existing_workspaces[-1]:  # last (or first) workspace
     empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
     to_workspace = empty_workspace
