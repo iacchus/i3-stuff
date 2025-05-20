@@ -38,7 +38,7 @@ existing_workspaces = [int(workspace.name) for workspace in descendants
                        and workspace.name != SCRATCHPAD_NAME
                        and workspace.name != SCRATCHPAD_NAME2]
 
-existing_workspaces.sort()
+#  existing_workspaces.sort()
 
 focused_window = root.find_focused()
 focused_workspace = focused_window.workspace()
@@ -50,18 +50,15 @@ if direction == "next":
 elif direction == "prev":
     existing_workspaces.reverse()
 
-if workspace_name == existing_workspaces[-1]:
-    if num_of_containers_in_focused_workspace > 0:
-        empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
-        to_workspace = empty_workspace
-    else:
-        to_workspace = existing_workspaces[0]
-else:
+if num_of_containers_in_focused_workspace == 0:  # a new, empty workspace
+    to_workspace = existing_workspaces[0]
+elif workspace_name == existing_workspaces[-1]:  # last (or first) workspace
+    empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
+    to_workspace = empty_workspace
+else:  # not last workspace
     current_workspace_index = existing_workspaces.index(workspace_name)
     to_workspace = existing_workspaces[current_workspace_index+1]
 
 sway.command(f"workspace number {to_workspace}")
-#  sway.command(f"move container to workspace number {to_workspace}, workspace number {to_workspace}")
-#  sway.command(f"workspace number {empty_workspace}")
 
 exit(0)
