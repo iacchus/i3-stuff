@@ -41,38 +41,56 @@ existing_workspaces = [int(workspace.name) for workspace in descendants
 existing_workspaces.sort()
 
 focused = root.find_focused()
-workspace = focused.workspace()
-print(workspace.descendants())
-num_of_containers_in_focused_workspace = len(workspace.descendants())
-#  windows = root.descendants()
-#  focused_id = focused.id
+focused_workspace = focused.workspace()
+workspace_name = int(focused_workspace.name)
+#  workspace_name = int(focused.workspace().name)
+#  print(workspace.descendants())
+num_of_containers_in_focused_workspace = len(focused_workspace.descendants())
 
 if direction == "next":
-    #  if int(workspace.name) == existing_workspaces[-1] and \
-    #          num_of_containers_in_focused_workspace > 1:
-    #      empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
-    #      to_workspace = empty_workspace
-    if int(workspace.name) == existing_workspaces[-1]:
-        if num_of_containers_in_focused_workspace > 1:
-            empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
-            to_workspace = empty_workspace
-        else:
-            to_workspace = existing_workspaces[0]
-    else:
-        current_workspace_index = existing_workspaces.index(int(workspace.name))
-        to_workspace = existing_workspaces[current_workspace_index+1]
+    pass
+    #  if workspace_name == existing_workspaces[-1]:
+    #      if num_of_containers_in_focused_workspace > 1:
+    #          empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
+    #          to_workspace = empty_workspace
+    #      else:
+    #          to_workspace = existing_workspaces[0]
+    #  else:
+    #      current_workspace_index = existing_workspaces.index(workspace_name)
+    #      to_workspace = existing_workspaces[current_workspace_index+1]
 
 elif direction == "prev":
-    #  existing_workspaces.reverse()
-    if int(workspace.name) == existing_workspaces[0] and \
-            num_of_containers_in_focused_workspace > 1:
+    existing_workspaces.reverse()
+
+if workspace_name == existing_workspaces[-1]:
+    if num_of_containers_in_focused_workspace > 1:
         empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
         to_workspace = empty_workspace
     else:
-        current_workspace_index = existing_workspaces.index(int(workspace.name))
-        to_workspace = existing_workspaces[current_workspace_index-1]
+        to_workspace = existing_workspaces[0]
+else:
+    current_workspace_index = existing_workspaces.index(workspace_name)
+    to_workspace = existing_workspaces[current_workspace_index+1]
 
-#  empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
+    #  if workspace_name == existing_workspaces[-1]:
+    #      if num_of_containers_in_focused_workspace > 1:
+    #          empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
+    #          to_workspace = empty_workspace
+    #      else:
+    #          to_workspace = existing_workspaces[0]
+    #  else:
+    #      current_workspace_index = existing_workspaces.index(workspace_name)
+    #      to_workspace = existing_workspaces[current_workspace_index+1]
+
+#  elif direction == "prev":
+#      #  existing_workspaces.reverse()
+#      if workspace_name == existing_workspaces[0] and \
+#              num_of_containers_in_focused_workspace > 1:
+#          empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
+#          to_workspace = empty_workspace
+#      else:
+#          current_workspace_index = existing_workspaces.index(workspace_name)
+#          to_workspace = existing_workspaces[current_workspace_index-1]
 
 sway.command(f"move container to workspace number {to_workspace}, workspace number {to_workspace}")
 #  sway.command(f"workspace number {empty_workspace}")
