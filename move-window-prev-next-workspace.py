@@ -42,20 +42,30 @@ existing_workspaces.sort()
 
 focused = root.find_focused()
 workspace = focused.workspace()
+print(workspace.descendants())
+num_of_containers_in_focused_workspace = len(workspace.descendants())
 #  windows = root.descendants()
 #  focused_id = focused.id
 
 if direction == "next":
+    #  if int(workspace.name) == existing_workspaces[-1] and \
+    #          num_of_containers_in_focused_workspace > 1:
+    #      empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
+    #      to_workspace = empty_workspace
     if int(workspace.name) == existing_workspaces[-1]:
-        empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
-        to_workspace = empty_workspace
+        if num_of_containers_in_focused_workspace > 1:
+            empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
+            to_workspace = empty_workspace
+        else:
+            to_workspace = existing_workspaces[0]
     else:
         current_workspace_index = existing_workspaces.index(int(workspace.name))
         to_workspace = existing_workspaces[current_workspace_index+1]
 
 elif direction == "prev":
     #  existing_workspaces.reverse()
-    if int(workspace.name) == existing_workspaces[0]:
+    if int(workspace.name) == existing_workspaces[0] and \
+            num_of_containers_in_focused_workspace > 1:
         empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
         to_workspace = empty_workspace
     else:
