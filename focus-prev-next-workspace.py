@@ -38,7 +38,7 @@ existing_workspaces = [int(workspace.name) for workspace in descendants
                        and workspace.name != SCRATCHPAD_NAME
                        and workspace.name != SCRATCHPAD_NAME2]
 
-#  existing_workspaces.sort()
+existing_workspaces.sort()
 
 focused_window = root.find_focused()
 focused_workspace = focused_window.workspace()
