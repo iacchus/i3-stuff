@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import subprocess
 import sys
 
 import i3ipc
@@ -47,12 +48,17 @@ num_of_containers_in_focused_workspace = len(focused_workspace.descendants())
 
 if direction == "next":
     next_to_focus = 0
+    subprocess.run(["notify-send", f"{workspace_name}", f"{existing_workspaces}"])
 elif direction == "prev":
-    next_to_focus = 1
+    next_to_focus = 0
     existing_workspaces.reverse()
+    subprocess.run(["notify-send", f"{workspace_name}", f"{existing_workspaces}"])
 
 if num_of_containers_in_focused_workspace == 0:  # a new, empty workspace
-    to_workspace = existing_workspaces[next_to_focus]
+    if workspace_name == existing_workspaces[-1]:  # last (or first) workspace
+        to_workspace = existing_workspaces[1]
+    else:
+        to_workspace = existing_workspaces[next_to_focus]
 elif workspace_name == existing_workspaces[-1]:  # last (or first) workspace
     empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
     to_workspace = empty_workspace
