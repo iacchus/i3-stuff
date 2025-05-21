@@ -28,6 +28,10 @@ focused = root.find_focused()
 windows = root.descendants()
 
 focused_id = focused.id
+#  print("foc:", focused_id)
+#  print("type:", focused.type)
+#  print("windows:", windows)
+
 window_id_list = [window.id for window in windows
                   if window.type in ("con", "floating_con")]
 
@@ -49,3 +53,5 @@ focus_to_id = next(window_gen)
 sway.command(f"[con_id={focus_to_id}] focus")
 
 #  subprocess.run(args=command)
+
+exit(0)
