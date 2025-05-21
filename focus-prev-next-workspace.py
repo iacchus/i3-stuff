@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
+#  import itertools
 import os
-import subprocess
+#  import subprocess
 import sys
 
 import i3ipc
@@ -47,24 +48,25 @@ workspace_name = int(focused_workspace.name)
 num_of_containers_in_focused_workspace = len(focused_workspace.descendants())
 
 if direction == "next":
-    next_to_focus = 0
-    subprocess.run(["notify-send", f"{workspace_name}", f"{existing_workspaces}"])
-elif direction == "prev":
-    next_to_focus = 0
-    existing_workspaces.reverse()
-    subprocess.run(["notify-send", f"{workspace_name}", f"{existing_workspaces}"])
-
-if num_of_containers_in_focused_workspace == 0:  # a new, empty workspace
-    if workspace_name == existing_workspaces[-1]:  # last (or first) workspace
-        to_workspace = existing_workspaces[1]
+    if workspace_name == existing_workspaces[-1] \
+            and num_of_containers_in_focused_workspace > 0:
+                to_workspace = existing_workspaces[-1] + 1
+    elif workspace_name == existing_workspaces[-1] \
+            and num_of_containers_in_focused_workspace == 0:
+                to_workspace = existing_workspaces[0]
     else:
-        to_workspace = existing_workspaces[next_to_focus]
-elif workspace_name == existing_workspaces[-1]:  # last (or first) workspace
-    empty_workspace = get_next_empty_workspace(workspaces=existing_workspaces)
-    to_workspace = empty_workspace
-else:  # not last workspace
-    current_workspace_index = existing_workspaces.index(workspace_name)
-    to_workspace = existing_workspaces[current_workspace_index+1]
+        current_workspace_index = existing_workspaces.index(workspace_name)
+        to_workspace = existing_workspaces[current_workspace_index+1]
+
+elif direction == "prev":
+    existing_workspaces.reverse()
+    if workspace_name == existing_workspaces[-1] \
+            and num_of_containers_in_focused_workspace > 0:
+                to_workspace = existing_workspaces[0] + 1
+    else:
+        current_workspace_index = existing_workspaces.index(workspace_name)
+        to_workspace = existing_workspaces[current_workspace_index+1]
+
 
 sway.command(f"workspace number {to_workspace}")
 

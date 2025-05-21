@@ -37,13 +37,13 @@ if direction == "prev":
 window_gen = itertools.cycle(window_id_list)
 
 for window_id in window_gen:
-    print("LOOP:", window_id)
+    #  print("LOOP:", window_id)
     if window_id == focused_id:
         break
 
 focus_to_id = next(window_gen)
 
-print("GO TO:", focus_to_id)
+#  print("GO TO:", focus_to_id)
 
 #  command = ["swaymsg", f"[con_id={focus_to_id}]", "focus"]
 sway.command(f"[con_id={focus_to_id}] focus")
