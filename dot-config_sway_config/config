@@ -62,7 +62,9 @@ default_floating_border pixel 1
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * bg /home/iacchus/Wallpapers/forest.jpg fill
+output * bg /home/iacchus/Wallpapers/forest.jpg center
 #
 # Example configuration:
 #
@@ -109,11 +111,14 @@ input type:keyboard {
 
 input type:pointer {
   middle_emulation enabled
+  accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
+  pointer_accel 0.80 # set mouse sensitivity (between -1 and 1)
 }
 
 input type:touchpad {
   tap enabled
   natural_scroll enabled
+  dwt enabled
 }
 
 ### Key bindings
@@ -125,7 +130,7 @@ input type:touchpad {
     bindsym F2 exec $webbrowser
     bindsym F3 exec $noteedditor
     bindsym F4 exec $filemanager
-    bindsym F6 exec $clipboardmanager
+    # bindsym F6 exec $clipboardmanager
     # bindsym F10 exec swaymsg '[app_id=".*"]' focus
     # bindsym F10 [all] focus next
     # bindsym F10 for_window [app_id=".*"] focus
@@ -146,6 +151,7 @@ input type:touchpad {
     # bindsym Print exec "/home/iacchus/git-stuff/swaywm-stuff/sway-screenshot -m output"
     bindsym Insert exec "/home/iacchus/git-stuff/swaywm-stuff/sway-screenshot -m region"
     bindsym $mod+Insert exec "/home/iacchus/git-stuff/swaywm-stuff/sway-screenshot -m output"
+    bindsym Control+Insert exec "/home/iacchus/git-stuff/swaywm-stuff/sway-screenshot -m output"
     bindsym $mod+Shift+Insert exec "/home/iacchus/git-stuff/swaywm-stuff/sway-screenshot -m window"
     # bindsym $mod+Print exec grim
     # bindsym Print exec $term grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | slurp)"
@@ -206,7 +212,8 @@ input type:touchpad {
     bindsym KP_Begin exec "/home/iacchus/git-stuff/swaywm-stuff/focus-next-empty-workspace.py"
     # bindsym KP_Left workspace prev
     bindsym KP_Left exec "/home/iacchus/git-stuff/swaywm-stuff/focus-prev-next-workspace.py prev"
-    bindsym KP_Insert bar hidden_state toggle
+    # bindsym KP_Insert bar hidden_state toggle
+    bindsym KP_Insert exec killall -SIGUSR1 waybar
     bindsym KP_Down sticky toggle
     bindsym KP_Delete kill
     bindsym KP_Enter exec $term
@@ -233,7 +240,6 @@ input type:touchpad {
     bindsym KP_Next [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 15:1 15:0 29:0
     bindsym KP_End [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 42:1 15:1 15:0 42:0 29:0
     # for_window [app_id="firefox-nightly" con_id=__focused__] bindgesture swipe:3:up exec ydotool key 1:1 1:0 29:1 20:1 20:0 29:0
-
 
     # bindgesture swipe:2:right workspace next
     # bindgesture swipe:2:left workspace prev
@@ -383,6 +389,8 @@ bindsym $mod+r mode "resize"
 for_window [app_id="Alacritty"] floating enable
 for_window [app_id="albert"] floating enable
 for_window [app_id="com.github.hluk.copyq"] floating enable
+for_window [app_id="org.kde.neochat"] floating enable
+
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
 # for_window [app_id="com.github.hluk.copyq"] floating enable, move scratchpad
 for_window [class="Gimp"] floating enable
@@ -398,8 +406,11 @@ for_window [app_id="com.github.PintaProject.Pinta"] fullscreen enable
 for_window [title="Espanso Sync Tool"] floating enable
 assign [title="Espanso Sync Tool"] scratchpad
 
-for_window [window_type="dialog"] floating enable
-for_window [window_role="dialog"] floating enable
+for_window [window_type="dialog"] floating enable, fullscreen disable
+for_window [window_role="dialog"] floating enable, fullscreen disable
+for_window [title="File Upload"] floating enable, fullscreen disable
+for_window [title="Save Image"] floating enable, fullscreen disable
+for_window [title="(?:Open|Save) (?:File|Folder|As|Image)"] floating enable, fullscreen disable
 
 for_window [shell="xwayland"] title_format "[XWayland] %title"
 
@@ -407,7 +418,7 @@ for_window [shell="xwayland"] title_format "[XWayland] %title"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    id "first"
+    id "waybar"
     swaybar_command waybar
 
     position top

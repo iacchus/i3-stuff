@@ -1,8 +1,14 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: FontAwesome, sans-serif;
     font-size: 12px;
 }
+
+/* window > * { */
+/* .modules-center > * { */
+/*     padding: 0; */
+/*     margin: 0; */
+/* } */
 
 window#waybar {
     /* background-color: rgba(43, 48, 59, 0.2); */
@@ -17,6 +23,9 @@ window#waybar {
     /* opacity: 0.2; */
     /* padding-bottom: 11px; */
     /* margin-bottom: 11px; */
+    /* padding: 0 4px; */
+    /* padding: 0 2px 0 4px; */
+    /* margin: 0 4px; */
 }
 
 /* window#waybar :hover > *  { */
@@ -30,12 +39,23 @@ window#waybar.hidden {
 }
 
 
-window#waybar.empty {
+window#waybar.empty,
+#waybar.empty {
     background-color: transparent;
+    padding: 0;
+    margin: 0;
 }
 
-/* window#waybar.solo { */
-/*     background-color: #FFFFFF; */
+/* window .empty { */
+/*     background-color: transparent; */
+/*     padding: 0; */
+/* } */
+
+/* window#waybar.solo, */
+/* #waybar.solo { */
+/*     [> background-color: #FFFFFF; <] */
+/*     padding: 0 4px; */
+/*     margin: 0 4px; */
 /* } */
 
 window#waybar.termite {
@@ -55,8 +75,13 @@ button {
     /* Avoid rounded borders under each button name */
     border: none;
     /* border-radius: 0; */
-    border-radius: 0px;
+    border-radius: 5px;
 }
+
+/* button:first-of-type { */
+/*   border-top-left-radius: 5px; */
+/*   border-bottom-left-radius: 5px; */
+/* } */
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
@@ -77,6 +102,8 @@ button:hover {
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 #workspaces button.focused {
@@ -84,6 +111,8 @@ button:hover {
     background: rgba(0, 0, 0, 0.2);
     /* box-shadow: inset 0 -3px #ffffff; */
     box-shadow: inset 0 -1px #ffffff;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 #workspaces button.urgent {
@@ -115,13 +144,23 @@ button:hover {
 #power-profiles-daemon,
 #mpd {
     padding: 0 10px;
+    border-radius: 5px;
     color: #ffffff;
 }
 
+#clock,
 #window,
 #workspaces {
     margin: 0 4px;
     border-radius: 5px;
+}
+
+/* #window > .empty { */
+/*   margin: 0; */
+/* } */
+window#waybar.empty #window {
+  margin: 0;
+  padding: 0;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -145,7 +184,8 @@ button:hover {
   /* background-color: #000000; */
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 5px;
-  padding-left: 7px;
+  padding: 0px 0px;
+  /* padding-left: 0; */
     /* margin-right: 0; */
 }
 
@@ -153,12 +193,16 @@ button:hover {
   /* background-color: #000000; */
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 5px ;
-  padding: 0 11px;
+  /* padding: 0 11px; */
+  /* padding: 0 0px; */
+  margin: 0 5px;
+  padding: 0;
     /* margin-right: 0; */
 }
 
 #clock {
     background-color: #64727D;
+    /* padding: 0 4px 0 2px; */
 }
 
 #battery {
@@ -296,7 +340,8 @@ label:focus {
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
+    /* background-color: #ecf0f1; */
+    background-color: #666666;
     color: #2d3436;
 }
 
@@ -326,11 +371,15 @@ label:focus {
 }
 
 #keyboard-state {
-    background: #97e1ad;
-    color: #000000;
+    /* background: #97e1ad; */
+    background-color: #333333;
+    /* color: #000000; */
+    color: #ffffff;
     padding: 0 0px;
-    margin: 0 5px;
+    /* margin: 0 5px; */
+    margin: 0;
     min-width: 16px;
+    border-radius: 5px;
 }
 
 #keyboard-state > label {
@@ -338,7 +387,9 @@ label:focus {
 }
 
 #keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
+    /* background: rgba(0, 0, 0, 0.2); */
+    background-color: #97e1ad;
+    color: #333333;
 }
 
 #scratchpad {

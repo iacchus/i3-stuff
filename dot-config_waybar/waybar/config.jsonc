@@ -2,17 +2,23 @@
 {
     // "layer": "top", // Waybar at top layer
     "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     // "height": 30, // Waybar height (to be removed for auto height)
+    // "height": 30, // Waybar height (to be removed for auto height)
+    "height": 14, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // "spacing": 4, // Gaps between modules (4px)
     // "spacing": 5, // Gaps between modules (4px)
     // "spacing": 0, // Gaps between modules (4px)
     // "exclusive": true,
     // "spacing": 3, // Gaps between modules (4px)
-    "margin": 5,
+    // "margin": 5,
+    // "margin": 2,
+    "margin": 1,
     // Choose the order of the modules
-    "mode": "hide",
+    // "mode": "hide",
+    "mode": "dock",
     // "start_hidden": "true",
     "ipc": true,
     // "modifier-reset": "release",
@@ -20,10 +26,14 @@
         "sway/workspaces",
         "sway/mode",
         "sway/scratchpad",
-        "custom/media"
+        "custom/media",
+        "pulseaudio",
+        "clock"
     ],
     "modules-center": [
         "sway/window"
+        // "sway/window",
+        // "clock"
     ],
     "modules-right": [
         // "mpd",
@@ -34,13 +44,13 @@
         // "cpu",
         // "memory",
         // "temperature",
-        // "backlight",
+        "backlight",
         // "keyboard-state",
         "tray",
         // "sway/language",
         "battery",
         "battery#bat2",
-        "clock",
+        // "clock,
         "custom/power"
     ],
     // Modules configuration
@@ -49,27 +59,30 @@
         "all-outputs": true,
         "warp-on-scroll": false,
         // "ignore-workspaces": ["scratchpad"],
-        // "format": "{name}: {icon}",
-        // "format-icons": {
+        "format": "{name} {icon}",
+        "format-icons": {
             // "1": "",
             // "2": "",
             // "3": "",
             // "4": "",
             // "5": "",
-        //     "urgent": "",
-        //     "focused": "",
-        //     "default": ""
-        // }
+            // "urgent": "",
+            // "focused": "",
+            // "default": ""
+            "urgent": "👋",
+            "focused": "🎃",
+            "default": "🕯"
+        }
     },
-    // "keyboard-state": {
-    //     "numlock": true,
-    //     "capslock": true,
-    //     "format": "{name} {icon}",
-    //     "format-icons": {
-    //         "locked": "",
-    //         "unlocked": ""
-    //     }
-    // },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
@@ -79,6 +92,12 @@
         "format-icons": ["", ""],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
+    },
+    "sway/window": {
+        // "rotate": 90,
+        "icon": true,
+        "icon-size": 16,
+        "show-focused-workspace-name": true
     },
     // "mpd": {
     //     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
@@ -109,8 +128,10 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "☕ on",
+            // "activated": "",
+            "deactivated": "😪 off"
+            // "deactivated": ""
         }
     },
     "tray": {
@@ -121,7 +142,8 @@
     "clock": {
         // "timezone": "America/New_York",
         "interval": 1,
-        "format": "{:%H:%M:%S}",
+        "format": "{:%a 📆 %b %d, %Y 🕰 %H:%M:%S}",
+        // "format": "{:%Y-%m-%d} {:%H:%M:%S}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -140,11 +162,11 @@
     //     "format": "{temperatureC}°C {icon}",
     //     "format-icons": ["", "", ""]
     // },
-    // "backlight": {
-    //     // "device": "acpi_video1",
-    //     "format": "{percent}% {icon}",
-    //     "format-icons": ["", "", "", "", "", "", "", "", ""]
-    // },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon}, {percent}% 💡",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
     "battery": {
         "states": {
             // "good": 95,
@@ -153,12 +175,12 @@
         },
         "format": "{capacity}% {icon}",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
+        "format-charging": " {capacity}%",
+        "format-plugged": "🔌 {capacity}%",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", "🔋"]
     },
     "battery#bat2": {
         "bat": "BAT2"
@@ -183,25 +205,25 @@
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
-    // "pulseaudio": {
-    //     // "scroll-step": 1, // %, can be a float
-    //     "format": "{volume}% {icon} {format_source}",
-    //     "format-bluetooth": "{volume}% {icon} {format_source}",
-    //     "format-bluetooth-muted": " {icon} {format_source}",
-    //     "format-muted": " {format_source}",
-    //     "format-source": "{volume}% ",
-    //     "format-source-muted": "",
-    //     "format-icons": {
-    //         "headphone": "",
-    //         "hands-free": "",
-    //         "headset": "",
-    //         "phone": "",
-    //         "portable": "",
-    //         "car": "",
-    //         "default": ["", "", ""]
-    //     },
-    //     "on-click": "pavucontrol"
-    // },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "🔊 {volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",
