@@ -159,6 +159,7 @@ input type:touchpad {
     bindsym F4 exec $filemanager
     bindsym F5 border toggle
     # bindsym F6 exec $clipboardmanager
+    bindsym F6 exec copyq toggle
     # bindsym F10 exec swaymsg '[app_id=".*"]' focus
     # bindsym F10 [all] focus next
     # bindsym F10 for_window [app_id=".*"] focus
@@ -238,6 +239,9 @@ input type:touchpad {
     bindsym $mod+Shift+Tab mode swtchr; exec ~/.cargo/bin/swtchr
     mode swtchr bindsym Backspace mode default
 
+    bindsym $mod+a exec $launcher
+    bindsym $mod+v exec $clipboardmanager
+
     bindsym KP_Home exec "/home/iacchus/git-stuff/swaywm-stuff/focus-prev-next-window.py prev"
     bindsym KP_Prior exec "/home/iacchus/git-stuff/swaywm-stuff/focus-prev-next-window.py next"
     # bindsym KP_Right workspace next
@@ -268,7 +272,7 @@ input type:touchpad {
     bindsym --release Control_L [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 29:1 56:1 44:1 44:0 56:0 29:0
     bindsym --release Control_R [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 29:1 56:1 44:1 44:0 56:0 29:0
     bindsym --release ISO_Level3_Shift [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 29:1 38:1 38:0 29:0
-    bindsym --release Super_L exec albert toggle
+    # bindsym --release Super_L exec albert toggle
 
     bindsym KP_Next [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 15:1 15:0 29:0
     bindsym KP_End [app_id="firefox-nightly" con_id=__focused__] exec ydotool key 1:1 1:0 29:1 42:1 15:1 15:0 42:0 29:0
@@ -364,7 +368,7 @@ input type:touchpad {
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
     bindsym $mod+b splith
-    bindsym $mod+v splitv
+    # bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -381,7 +385,7 @@ input type:touchpad {
     bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    # bindsym $mod+a focus parent
 #
 # Scratchpad:
 #
@@ -480,7 +484,7 @@ bar {
 exec opensnitch-ui
 exec nm-applet
 exec albert
-exec copyq
+exec_always copyq --start-server
 exec espanso start
 exec ydotoold
 
