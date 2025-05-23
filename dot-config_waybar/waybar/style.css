@@ -1,4 +1,5 @@
-* {
+*,
+window {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, sans-serif;
     font-size: 12px;
@@ -8,6 +9,10 @@
 /* .modules-center > * { */
 /*     padding: 0; */
 /*     margin: 0; */
+/* } */
+
+/* widget { */
+/*   box-shadow: 3px 3px 3px 3px #000000; */
 /* } */
 
 window#waybar {
@@ -28,6 +33,14 @@ window#waybar {
     /* margin: 0 4px; */
 }
 
+#window {
+    text-shadow: 1px 1px 0px #000000;
+    /* text-shadow: -1px -1px 3px #000000, */
+    /*              -1px 1px 3px #000000, */
+    /*              1px -1px 3px #000000, */
+    /*              1px 1px 3px #000000; */
+}
+
 /* window#waybar :hover > *  { */
 /*   [> margin-top: 7px <] */
 /*   [> opacity: 0.9; <] */
@@ -39,12 +52,12 @@ window#waybar.hidden {
 }
 
 
-window#waybar.empty,
-#waybar.empty {
-    background-color: transparent;
-    padding: 0;
-    margin: 0;
-}
+/* window#waybar.empty, */
+/* #waybar.empty { */
+/*     background-color: transparent; */
+/*     padding: 0; */
+/*     margin: 0; */
+/* } */
 
 /* window .empty { */
 /*     background-color: transparent; */
@@ -143,6 +156,7 @@ button:hover {
 #scratchpad,
 #power-profiles-daemon,
 #mpd {
+    margin: 0 1px;
     padding: 0 10px;
     border-radius: 5px;
     color: #ffffff;
@@ -151,9 +165,16 @@ button:hover {
 #clock,
 #window,
 #workspaces {
-    margin: 0 4px;
+    /* margin: 0 4px; */
+    margin: 0 1px;
     border-radius: 5px;
 }
+
+/* #idle_inhibitor, */
+/* #workspaces { */
+/*     margin: 0 4px; */
+/*     border-radius: 5px; */
+/* } */
 
 /* #window > .empty { */
 /*   margin: 0; */
@@ -182,7 +203,7 @@ window#waybar.empty #window {
 
 .modules-right  {
   /* background-color: #000000; */
-  background-color: rgba(0, 0, 0, 0.4);
+  /* background-color: rgba(0, 0, 0, 0.4); */
   border-radius: 5px;
   padding: 0px 0px;
   /* padding-left: 0; */
@@ -201,8 +222,8 @@ window#waybar.empty #window {
 }
 
 #clock {
-    background-color: #64727D;
-    /* padding: 0 4px 0 2px; */
+    /* background-color: #64727D; */
+    background-color: rgba(100, 114, 125, 0.6);
 }
 
 #battery {
@@ -212,7 +233,8 @@ window#waybar.empty #window {
 
 #battery.charging, #battery.plugged {
     color: #ffffff;
-    background-color: #26A65B;
+    /* background-color: #26A65B; */
+    background-color: rgba(38, 166, 91, 0.6);
 }
 
 @keyframes blink {
@@ -270,7 +292,8 @@ label:focus {
 }
 
 #backlight {
-    background-color: #90b1b1;
+    /* background-color: #90b1b1; */
+    background-color: rgba(144, 177, 177, 0.6);
 }
 
 #network {
@@ -282,13 +305,17 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
+    /* background-color: #f1c40f; */
+    background-color: rgba(241, 196, 15, 0.6);
+    /* color: #000000; */
+    color: #ffffff;
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    /* background-color: #90b1b1; */
+    background-color: rgba(144, 177, 177, 0.6);
+    /* color: #2a5c45; */
+    color: #ffffff;
 }
 
 #wireplumber {
@@ -323,7 +350,8 @@ label:focus {
 }
 
 #tray {
-    background-color: #2980b9;
+    /* background-color: #2980b9; */
+    background-color: rgba(41, 128, 185, 0.6);
 }
 
 #tray > .passive {
@@ -336,12 +364,12 @@ label:focus {
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
+    background-color: rgba(45, 52, 54, 0.6);
 }
 
 #idle_inhibitor.activated {
     /* background-color: #ecf0f1; */
-    background-color: #666666;
+    background-color: rgba(102, 102, 102, 0.6);
     color: #2d3436;
 }
 
