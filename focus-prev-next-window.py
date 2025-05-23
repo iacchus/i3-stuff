@@ -48,6 +48,8 @@ for window_id in window_gen:
 focus_to_id = next(window_gen)
 
 #  print("GO TO:", focus_to_id)
+#  command = ["notify-send", f"[con_id={focus_to_id}] focus"]
+#  subprocess.run(args=command)
 
 #  command = ["swaymsg", f"[con_id={focus_to_id}]", "focus"]
 sway.command(f"[con_id={focus_to_id}] focus")
