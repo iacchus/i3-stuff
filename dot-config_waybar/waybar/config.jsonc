@@ -75,6 +75,7 @@
         }
     },
     "keyboard-state": {
+        "device-path": "/dev/input/event4",
         "numlock": true,
         "capslock": true,
         // "format": "{name} {icon}",
