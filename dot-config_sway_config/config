@@ -166,7 +166,7 @@ input type:touchpad {
     # bindsym F7 exec "gammastep -O 2750"
     bindsym F7 exec "/home/iacchus/git-stuff/swaywm-stuff/program-toggle.py gammastep -O 2750"
     # bindsym F8 exec ""
-    bindsym F8 reload
+    # bindsym F8 reload
     bindsym F9 exec "/home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py prev"
     bindsym F10 exec "/home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py next"
     # bindsym F11 workspace next
