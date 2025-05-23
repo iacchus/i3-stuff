@@ -48,8 +48,9 @@ shadow_blur_radius 20
 shadow_color #0000007F
 
 # inactive window fade amount. 0.0 = no dimming, 1.0 = fully dimmed
-default_dim_inactive 0.2
-dim_inactive_colors.unfocused #000000FF
+default_dim_inactive 0.4
+# dim_inactive_colors.unfocused #000000FF
+dim_inactive_colors.unfocused #00000066
 dim_inactive_colors.urgent #900000FF
 
 # Move minimized windows into Scratchpad (enable|disable)
@@ -59,6 +60,32 @@ scratchpad_minimize disable
 default_border pixel 1
 default_floating_border pixel 1
 
+# https://www.reddit.com/r/swaywm/comments/1b72ve8/color_of_the_window_borders/
+## Colours
+set $base00 #282828
+set $base01 #3c3836
+set $base02 #504945
+set $base03 #665c54
+set $base04 #d5c4a1
+set $base05 #ebdbb2
+set $base06 #fbf1c7
+set $base07 #ebdbb2
+set $base08 #cc241d
+set $base09 #d65d0e99
+set $base0A #d7992199
+set $base0B #98971a
+set $base0C #458588
+set $base0D #b16286
+set $base0E #689d6a
+set $base0F #a89984
+
+## Window Colours
+client.focused   $base0D  $base00  $base06  $base08  $base09
+client.focused_inactive  $base02  $base00  $base06  $base08  $base02
+client.unfocused   $base01  $base00  $base06  $base08  $base02
+client.urgent   $base07  $base00  $base08  $base0B  $base02
+client.placeholder       $base02  $base00  $base06  $base03  $base04
+client.background        $base00
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -130,6 +157,7 @@ input type:touchpad {
     bindsym F2 exec $webbrowser
     bindsym F3 exec $noteedditor
     bindsym F4 exec $filemanager
+    bindsym F5 border toggle
     # bindsym F6 exec $clipboardmanager
     # bindsym F10 exec swaymsg '[app_id=".*"]' focus
     # bindsym F10 [all] focus next
@@ -138,6 +166,7 @@ input type:touchpad {
     # bindsym F7 exec "gammastep -O 2750"
     bindsym F7 exec "/home/iacchus/git-stuff/swaywm-stuff/program-toggle.py gammastep -O 2750"
     # bindsym F8 exec ""
+    bindsym F8 reload
     bindsym F9 exec "/home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py prev"
     bindsym F10 exec "/home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py next"
     # bindsym F11 workspace next
@@ -197,6 +226,10 @@ input type:touchpad {
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
+    bindsym $mod+r reload
+
+    # Reload Waybar configuration file
+    bindsym $mod+z reload killall -SIGUSR2 waybar       
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -384,7 +417,8 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+# bindsym $mod+r mode "resize"
+bindsym $mod+Shift+r mode "resize"
 
 for_window [app_id="Alacritty"] floating enable
 for_window [app_id="albert"] floating enable
