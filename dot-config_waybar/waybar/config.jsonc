@@ -45,7 +45,7 @@
         // "memory",
         // "temperature",
         "backlight",
-        // "keyboard-state",
+        "keyboard-state",
         "tray",
         // "sway/language",
         "battery",
@@ -77,10 +77,16 @@
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
-        "format": "{name} {icon}",
+        // "format": "{name} {icon}",
+        "format": {
+          // "numlock": "{icon} １",
+          // "capslock": "{icon} Ａ",
+          "numlock": "１",
+          "capslock": "Ａ",
+        },
         "format-icons": {
-            "locked": "",
-            "unlocked": ""
+            "locked": "🔐",
+            "unlocked": "🔓"
         }
     },
     "sway/mode": {

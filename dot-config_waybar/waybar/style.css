@@ -34,7 +34,8 @@ window#waybar {
 }
 
 #window {
-    text-shadow: 1px 1px 0px #000000;
+    /* text-shadow: 1px 1px 0px #000000; */
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.9);
     padding: 0 10px;
     /* text-shadow: -1px -1px 3px #000000, */
     /*              -1px 1px 3px #000000, */
@@ -112,6 +113,7 @@ button:hover {
     padding: 0 5px;
     /* background-color: transparent; */
     color: #ffffff;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.9);
 }
 
 #workspaces button:hover {
@@ -161,6 +163,7 @@ button:hover {
     padding: 0 10px;
     border-radius: 3px;
     color: #ffffff;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.9);
 }
 
 #clock,
@@ -417,8 +420,11 @@ label:focus {
 
 #keyboard-state > label.locked {
     /* background: rgba(0, 0, 0, 0.2); */
-    background-color: #97e1ad;
-    color: #333333;
+    /* background-color: #97e1ad; */
+    background-color: rgba(127, 17, 224, 0.6);
+    /* color: #333333; */
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: bold;
 }
 
 #scratchpad {
