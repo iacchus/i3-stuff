@@ -28,9 +28,6 @@ focused = root.find_focused()
 windows = root.descendants()
 
 focused_id = focused.id
-#  print("foc:", focused_id)
-#  print("type:", focused.type)
-#  print("windows:", windows)
 
 window_id_list = [window.id for window in windows
                   if window.type in ("con", "floating_con")]
@@ -40,12 +37,24 @@ if direction == "prev":
 
 window_gen = itertools.cycle(window_id_list)
 
-for window_id in window_gen:
-    #  print("LOOP:", window_id)
-    if window_id == focused_id:
-        break
+#  for window_id in window_gen:
+#      if window_id == focused_id:
+#          break
 
-focus_to_id = next(window_gen)
+num_of_windows = len(window_id_list)
+all_windows = window_id_list * 2
+
+index = 0
+
+for idx, window_id in enumerate(all_windows):
+    if window_id == focused_id:
+        index = idx + 1
+        break
+#  command = ["notify-send", f"fid: {focused_id}"]
+#  subprocess.run(args=command)
+
+#  focus_to_id = next(window_gen)
+focus_to_id = all_windows[index]
 
 #  print("GO TO:", focus_to_id)
 #  command = ["notify-send", f"[con_id={focus_to_id}] focus"]
