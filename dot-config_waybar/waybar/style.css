@@ -2,7 +2,7 @@
 window {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, sans-serif;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 /* window > * { */
@@ -331,6 +331,20 @@ label:focus {
     background-color: #f53c3c;
 }
 
+#custom-logo {
+  padding: 0 10px 0 3px;
+  margin: 0 1px;
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  color: #1793D1;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+  border-radius: 3px;
+}
+
+#custom-power {
+  background-color: rgba(0, 0, 0, 0.4);
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+}
+
 #custom-media {
     background-color: #66cc99;
     color: #2a5c45;
@@ -374,7 +388,7 @@ label:focus {
 #idle_inhibitor.activated {
     /* background-color: #ecf0f1; */
     background-color: rgba(102, 102, 102, 0.6);
-    color: #2d3436;
+    /* color: #2d3436; */
 }
 
 #mpd {

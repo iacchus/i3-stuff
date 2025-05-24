@@ -31,7 +31,8 @@ set $calculator "qalculate-gtk"
 
 ### Appearance
 # window corner radius in px
-corner_radius 10
+# corner_radius 10
+corner_radius 7
 
 # Window background blur
 # blur off
@@ -64,14 +65,16 @@ default_floating_border pixel 1
 ## Colours
 set $base00 #282828
 set $base01 #3c3836
-set $base02 #504945
+# set $base02 #504945
+set $base02 #00000099
 set $base03 #665c54
 set $base04 #d5c4a1
 set $base05 #ebdbb2
 set $base06 #fbf1c7
 set $base07 #ebdbb2
 set $base08 #cc241d
-set $base09 #d65d0e99
+# set $base09 #d65d0e99
+set $base09 #33333399
 set $base0A #d7992199
 set $base0B #98971a
 set $base0C #458588
@@ -92,6 +95,8 @@ client.background        $base00
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # output * bg /home/iacchus/Wallpapers/forest.jpg fill
 output * bg /home/iacchus/Wallpapers/forest.jpg center
+# output * bg /home/iacchus/Wallpapers/forest_watermark.jpg center
+# output * bg /home/iacchus/Wallpapers/forest_watermark.jpg stretch
 #
 # Example configuration:
 #
@@ -424,7 +429,11 @@ mode "resize" {
 # bindsym $mod+r mode "resize"
 bindsym $mod+Shift+r mode "resize"
 
-for_window [app_id="Alacritty"] floating enable
+for_window [app_id="Alacritty"] {
+  floating enable
+  resize set width 1093 px
+  resize set height 614 px
+}
 for_window [app_id="albert"] floating enable
 for_window [app_id="com.github.hluk.copyq"] floating enable
 for_window [app_id="org.kde.neochat"] floating enable
@@ -449,6 +458,7 @@ for_window [window_role="dialog"] floating enable, fullscreen disable
 for_window [title="File Upload"] floating enable, fullscreen disable
 for_window [title="Save Image"] floating enable, fullscreen disable
 for_window [title="(?:Open|Save) (?:File|Folder|As|Image)"] floating enable, fullscreen disable
+for_window [title="Enter name of file to save to…"] floating enable, fullscreen disable
 
 for_window [shell="xwayland"] title_format "[XWayland] %title"
 

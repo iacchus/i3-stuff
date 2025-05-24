@@ -1,14 +1,13 @@
 // -*- mode: jsonc -*-
 {
-    "name": "waybar-top",
+    "name": "waybar-bottom",
     // "layer": "top", // Waybar at top layer
     "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    // "position": "top", // Waybar position (top|bottom|left|right)
+    "position": "bottom", // Waybar position (top|bottom|left|right)
     // "height": 30, // Waybar height (to be removed for auto height)
     // "height": 30, // Waybar height (to be removed for auto height)
-    // "height": 14, // Waybar height (to be removed for auto height)
-    "height": 10, // Waybar height (to be removed for auto height)
+    "height": 14, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // "spacing": 4, // Gaps between modules (4px)
     // "spacing": 5, // Gaps between modules (4px)
@@ -147,17 +146,15 @@
     "tray": {
         // "icon-size": 21,
         // "spacing": 10
-        // "spacing": 0
-        "icon-size": 15,
-        "spacing": 3
+        "spacing": 0
     },
     "clock": {
         // "timezone": "America/New_York",
         "interval": 1,
         "format": "{:%a 📆 %b %d, %Y 🕰 %H:%M:%S}",
         // "format": "{:%Y-%m-%d} {:%H:%M:%S}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-        // "format-alt": "{:%Y-%m-%d}"
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
     },
     // "cpu": {
     //     "format": "{usage}% ",
