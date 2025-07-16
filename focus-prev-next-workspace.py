@@ -15,7 +15,7 @@ else:
     print(f"usage: {sys.argv[0]} <prev|next>")
     exit(1)
 
-SWAYSOCK = os.environ['SWAYSOCK']
+I3SOCK = os.environ['I3SOCK']
 SCRATCHPAD_NAME = "__i3_scratch"
 SCRATCHPAD_NAME2 = "scratchpad"
 
@@ -30,7 +30,7 @@ def get_next_empty_workspace(workspaces: list[int]):
     return chosen
 
 
-sway = i3ipc.Connection(socket_path=SWAYSOCK)
+sway = i3ipc.Connection(socket_path=I3SOCK)
 
 root = sway.get_tree()
 descendants = root.descendants()

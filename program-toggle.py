@@ -19,9 +19,9 @@ else:
     print(f"usage: {sys.argv[0]} <command> [args]")
     exit(1)
 
-SWAYSOCK = os.environ['SWAYSOCK']
+I3SOCK = os.environ['I3SOCK']
 
-sway = i3ipc.Connection(socket_path=SWAYSOCK)
+sway = i3ipc.Connection(socket_path=I3SOCK)
 
 for proc in psutil.process_iter():
     print(proc.name)
