@@ -30,9 +30,9 @@ def get_next_empty_workspace(workspaces: list[int]):
     return chosen
 
 
-sway = i3ipc.Connection(socket_path=I3SOCK)
+i3 = i3ipc.Connection(socket_path=I3SOCK)
 
-root = sway.get_tree()
+root = i3.get_tree()
 descendants = root.descendants()
 
 existing_workspaces = [int(workspace.name) for workspace in descendants
@@ -68,6 +68,6 @@ elif direction == "prev":
         to_workspace = existing_workspaces[current_workspace_index+1]
 
 
-sway.command(f"workspace number {to_workspace}")
+i3.command(f"workspace number {to_workspace}")
 
 exit(0)
