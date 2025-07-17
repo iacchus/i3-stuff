@@ -20,20 +20,17 @@ else:
 
 I3SOCK = os.environ['I3SOCK']
 
-i3 = i3ipc.Connection(socket_path=I3SOCK)
+sway = i3ipc.Connection(socket_path=I3SOCK)
 
-root = i3.get_tree()
+root = sway.get_tree()
 
 focused = root.find_focused()
 windows = root.descendants()
 
-#  focused_id = focused.id
-focused_id = focused.window
+focused_id = focused.id
 
-#  window_id_list = [window.id for window in windows
-window_id_list = [window.window for window in windows
-                  if window.type in ("con", "floating_con")
-                  if window.window]
+window_id_list = [window.id for window in windows
+                  if window.type in ("con", "floating_con")]
 
 print(dir(window_id_list[0]))
 
@@ -54,7 +51,6 @@ for idx, window_id in enumerate(all_windows):
 
 focus_to_id = all_windows[index]
 
-#  sway.command(f"[con_id={focus_to_id}] focus")
-i3.command(f"[id={focus_to_id}] focus")
+sway.command(f"[con_id={focus_to_id}] focus")
 
 exit(0)
