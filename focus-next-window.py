@@ -1,22 +1,19 @@
 #!/usr/bin/env python
 
-#!/home/iacchus/.venv/bin/python
-
-
 #  import itertools
 #  import os
 #  import subprocess
-import sys
+#  import sys
 
 import i3ipc
 
-argc = len(sys.argv)
-
-if argc == 2 and sys.argv[1] in ("prev", "next"):
-    direction = sys.argv[1]
-else:
-    print(f"usage: {sys.argv[0]} <prev|next>")
-    exit(1)
+#  argc = len(sys.argv)
+#
+#  if argc == 2 and sys.argv[1] in ("prev", "next"):
+#      direction = sys.argv[1]
+#  else:
+#      print(f"usage: {sys.argv[0]} <prev|next>")
+#      exit(1)
 
 #  I3SOCK = os.environ['I3SOCK']
 #
@@ -37,8 +34,8 @@ window_id_list = [window.window for window in windows
                   if window.window
                   if not window.name.startswith("polybar")]
 
-if direction == "prev":
-    window_id_list.reverse()
+#  if direction == "prev":
+#      window_id_list.reverse()
 
 #  window_gen = itertools.cycle(window_id_list)
 
