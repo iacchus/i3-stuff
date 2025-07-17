@@ -35,8 +35,6 @@ window_id_list = [window.window for window in windows
                   if window.type in ("con", "floating_con")
                   if window.window]
 
-print(dir(window_id_list[0]))
-
 if direction == "prev":
     window_id_list.reverse()
 
