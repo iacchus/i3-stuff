@@ -12,7 +12,6 @@ i3 = i3ipc.Connection()
 for proc in psutil.process_iter(["name"]):
 
     if proc.info["name"] == NAME:
-        print(proc.info["name"])
         subprocess.run(args=["killall", NAME])
         exit(0)
 
