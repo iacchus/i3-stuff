@@ -252,7 +252,7 @@ bindsym F6 exec copyq toggle
 # bindsym F10 for_window [all] focus
 # bindsym F7 exec "gammastep -O 2750"
 # bindsym F7 exec "/home/iacchus/git-stuff/swaywm-stuff/program-toggle.py gammastep -O 2750"
-bindsym F7 exec "/home/iacchus/git-stuff/swaywm-stuff/program-toggle.py polybar"
+bindsym F7 exec "/data/data/com.termux/files/home/git-stuff/i3-stuff/toggle-polybar.py"
 # bindsym F8 exec ""
 # bindsym F8 reload
 # bindsym F9 exec "/home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py prev"
