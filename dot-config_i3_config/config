@@ -52,21 +52,24 @@ client.urgent   $base07  $base00  $base08  $base0B  $base02
 client.placeholder       $base02  $base00  $base06  $base03  $base04
 client.background        $base00
 
+# exec --no-startup-id feh --bg-center ~/other/shared/AUTOBACKUP/WALLPAPERS/1200x2000.png
+exec --no-startup-id feh --bg-center ~/other/shared/AUTOBACKUP/WALLPAPERS/1200x2000/Untitled2.png
+
 exec --no-startup-id xcompmgr
+# exec --no-startup-id picom
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
+# exec --no-startup-id dex --autostart --environment i3
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id feh --bg-center ~/other/shared/AUTOBACKUP/WALLPAPERS/1200x2000.png
 # exec --no-startup-id nm-applet
 
 exec --no-startup-id polybar top
@@ -191,7 +194,8 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-msg exit"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -247,7 +251,8 @@ bindsym F6 exec copyq toggle
 # bindsym F10 for_window [app_id=".*"] focus
 # bindsym F10 for_window [all] focus
 # bindsym F7 exec "gammastep -O 2750"
-bindsym F7 exec "/home/iacchus/git-stuff/swaywm-stuff/program-toggle.py gammastep -O 2750"
+# bindsym F7 exec "/home/iacchus/git-stuff/swaywm-stuff/program-toggle.py gammastep -O 2750"
+bindsym F7 exec "/home/iacchus/git-stuff/swaywm-stuff/program-toggle.py polybar"
 # bindsym F8 exec ""
 # bindsym F8 reload
 # bindsym F9 exec "/home/iacchus/git-stuff/swaywm-stuff/swaywm-focus-prev-next.py prev"
@@ -259,8 +264,12 @@ bindsym F7 exec "/home/iacchus/git-stuff/swaywm-stuff/program-toggle.py gammaste
 bindsym F8 exec "/data/data/com.termux/files/home/git-stuff/i3-stuff/focus-next-empty-workspace.py prev"
 bindsym F9 exec "/data/data/com.termux/files/home/git-stuff/i3-stuff/move-window-prev-next-workspace.py prev"
 bindsym F10 exec "/data/data/com.termux/files/home/git-stuff/i3-stuff/move-window-prev-next-workspace.py next"
-bindsym F11 exec "/data/data/com.termux/files/home/git-stuff/i3-stuff/focus-prev-next-window.py prev"
-bindsym F12 exec "/data/data/com.termux/files/home/git-stuff/i3-stuff/focus-prev-next-window.py next"
+bindsym F11 exec "/data/data/com.termux/files/home/git-stuff/i3-stuff/focus-prev-window.py"
+bindsym F12 exec "/data/data/com.termux/files/home/git-stuff/i3-stuff/focus-next-window.py"
+# bindsym F11 exec "/data/data/com.termux/files/home/git-stuff/i3-stuff/focus-prev-next-window.py prev"
+# bindsym F12 exec "/data/data/com.termux/files/home/git-stuff/i3-stuff/focus-prev-next-window.py next"
+# bindsym F11 exec "/data/data/com.termux/files/home/git-stuff/i3-stuff/focus-prev-next-workspace.py prev"
+# bindsym F12 exec "/data/data/com.termux/files/home/git-stuff/i3-stuff/focus-prev-next-workspace.py next"
 # bindsym KP_Home exec "/home/iacchus/git-stuff/swaywm-stuff/focus-prev-next-window.py prev"
 # bindsym KP_Prior exec "/home/iacchus/git-stuff/swaywm-stuff/focus-prev-next-window.py next"
 # bindsym KP_Right exec "/home/iacchus/git-stuff/swaywm-stuff/focus-prev-next-workspace.py next"
