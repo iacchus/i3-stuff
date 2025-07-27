@@ -9,7 +9,7 @@ import psutil
 import subprocess
 #  import sys
 
-#  import i3ipc
+import i3ipc
 
 NAME = "polybar"
 #  argc = len(sys.argv)
@@ -23,10 +23,12 @@ NAME = "polybar"
 #  I3SOCK = os.environ['I3SOCK']
 
 #  sway = i3ipc.Connection()
+i3 = i3ipc.Connection()
 
-for proc in psutil.process_iter():
+for proc in psutil.process_iter(["name"]):
 
-    if proc.name == NAME:
+    if proc.info["name"] == NAME:
+        print(proc.info["name"])
         subprocess.run(args=["killall", NAME])
         exit(0)
 
@@ -34,5 +36,5 @@ for proc in psutil.process_iter():
 #  sway.command(f"[con_id={focus_to_id}] focus")
 #  sway.command(command)
 subprocess.run(args=NAME)
-
+i3.command(f"exec {NAME}")
 #  subprocess.run(args=command)
