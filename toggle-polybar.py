@@ -7,9 +7,9 @@
 #  import os
 import psutil
 import subprocess
-import sys
+#  import sys
 
-import i3ipc
+#  import i3ipc
 
 NAME = "polybar"
 #  argc = len(sys.argv)
@@ -22,7 +22,7 @@ NAME = "polybar"
 
 #  I3SOCK = os.environ['I3SOCK']
 
-sway = i3ipc.Connection()
+#  sway = i3ipc.Connection()
 
 for proc in psutil.process_iter():
 
