@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/home/.venv/bin/python
 
 import psutil
-import subprocess
+#  import subprocess
 
 import i3ipc
 
